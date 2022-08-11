@@ -17,10 +17,29 @@ namespace SuperHeroAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<SuperHero>>> GetSuperHeroes()
+        [HttpGet("{page}")]
+        public async Task<ActionResult<List<SuperHero>>> GetSuperHeroes(int page = 1)
         {
-            return Ok(await _context.SuperHeroes.ToListAsync());
+            if (_context.SuperHeroes == null)
+                return NotFound();
+
+            var pageResults = 5f;
+            var pageCount = Math.Ceiling(_context.SuperHeroes.Count() / pageResults);
+
+            var superHeroes = await _context.SuperHeroes
+                .Skip((page - 1) * (int) pageResults)
+                .Take((int) pageResults)
+                .ToListAsync();
+
+            var response = new SuperHeroResponse
+            {
+                SuperHeroes = superHeroes,
+                CurrentPage = page,
+                Pages = (int) pageCount
+            };
+
+            return Ok(response);
+            //return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
         [HttpPost]

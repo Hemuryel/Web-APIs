@@ -3,6 +3,12 @@
 <button (click)="downloadPdf()">Download .pdf</button>
 
 <div id="context" #content>
+  <br /><br />
+  Página {{ page }} / {{ lastPage }}
+  <br /><br />
+  <button (click)="changePage(page - 1)" *ngIf="page <= lastPage && page != 1">Anterior</button>
+  <button (click)="changePage(page + 1)" *ngIf="page < lastPage">Próximo</button>
+  <br /><br />
   <table>
     <thead>
       <th>Name</th>

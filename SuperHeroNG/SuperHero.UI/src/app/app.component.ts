@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SuperHero } from './models/super-hero';
+import { SuperHeroResponse } from './models/super-hero-response';
 import { SuperHeroService } from './services/super-hero.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { jsPDF } from 'jspdf';
@@ -14,18 +15,26 @@ export class AppComponent {
   title = 'SuperHero.UI';
   heroes: SuperHero[] = [];
   heroToEdit?: SuperHero;
+  page: number = 1;
+  lastPage: number = 1;
   @ViewChild('content', {static: false}) el!: ElementRef;
 
   constructor(private superHeroService: SuperHeroService) { }
 
   ngOnInit(): void {
-    this.getSuperHeroes();
+    this.getSuperHeroes(1);
   }
 
-  getSuperHeroes(){
+  getSuperHeroes(page: number){
     this.superHeroService
-    .getSuperHeroes()
-    .subscribe((result: SuperHero[]) => (this.heroes = result));
+    .getSuperHeroes(page)
+    .subscribe((result: SuperHeroResponse): void => {
+      console.log(result);
+      
+      this.heroes = result?.superHeroes;
+      this.page = result?.currentPage;
+      this.lastPage = result?.pages;
+    });
   }
 
   updateHeroList(heroes: SuperHero[]) {
@@ -63,5 +72,9 @@ export class AppComponent {
         pdf.save("modelo.pdf");
       }
     })
+  }
+
+  changePage(page: number){
+    this.getSuperHeroes(page);
   }
 }
