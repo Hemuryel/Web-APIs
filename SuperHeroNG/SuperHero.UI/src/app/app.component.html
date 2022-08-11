@@ -1,23 +1,27 @@
 <button (click)="initNewHero()">Create New Hero</button>
+<button (click)="downloadCsv()">Download .csv</button>
+<button (click)="downloadPdf()">Download .pdf</button>
 
-<table>
-  <thead>
-    <th>Name</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Place</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let hero of heroes">
-      <td>{{ hero.name }}</td>
-      <td>{{ hero.firstName }}</td>
-      <td>{{ hero.lastName }}</td>
-      <td>{{ hero.place }}</td>
-      <td><button (click)="editHero(hero)">Edit</button></td>
-    </tr>
-  </tbody>
-</table>
+<div id="context" #content>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Place</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hero of heroes">
+        <td>{{ hero.name }}</td>
+        <td>{{ hero.firstName }}</td>
+        <td>{{ hero.lastName }}</td>
+        <td>{{ hero.place }}</td>
+        <td><button (click)="editHero(hero)">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <app-edit-hero 
   [hero]="heroToEdit" 
