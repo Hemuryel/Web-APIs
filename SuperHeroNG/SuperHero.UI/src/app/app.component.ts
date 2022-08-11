@@ -12,12 +12,12 @@ export class AppComponent {
   heroes: SuperHero[] = [];
   heroToEdit?: SuperHero;
 
-  constructor(private superHeroService: SuperHeroService) {}
+  constructor(private superHeroService: SuperHeroService) { }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.superHeroService
-    .getSuperHeroes()
-    .subscribe((result: SuperHero[]) => (this.heroes = result));
+      .getSuperHeroes()
+      .subscribe((result: SuperHero[]) => (this.heroes = result));
   }
 
   updateHeroList(heroes: SuperHero[]) {
