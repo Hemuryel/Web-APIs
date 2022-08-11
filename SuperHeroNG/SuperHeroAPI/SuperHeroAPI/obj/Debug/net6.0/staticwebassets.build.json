@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "e9c3ixGamqx3A8OBZdvX//0Y18P8F8Mfiv35UxyUQRQ=",
+  "Hash": "FdDJOOrrUTSqhdxnRuvSmGuFoR6JTvyu0wApo2UOHsY=",
   "Source": "SuperHeroAPI",
   "BasePath": "_content/SuperHeroAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SuperHeroAPI\\wwwroot",
+      "Source": "SuperHeroAPI",
+      "ContentRoot": "D:\\dev\\SuperHeroNG\\SuperHeroAPI\\SuperHeroAPI\\wwwroot\\",
+      "BasePath": "_content/SuperHeroAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
