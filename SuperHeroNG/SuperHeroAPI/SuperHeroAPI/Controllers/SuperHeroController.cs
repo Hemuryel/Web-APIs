@@ -27,6 +27,7 @@ namespace SuperHeroAPI.Controllers
             var pageCount = Math.Ceiling(_context.SuperHeroes.Count() / pageResults);
 
             var superHeroes = await _context.SuperHeroes
+                .AsNoTracking()
                 .Skip((page - 1) * (int) pageResults)
                 .Take((int) pageResults)
                 .ToListAsync();
