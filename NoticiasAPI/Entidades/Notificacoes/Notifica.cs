@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entidades.Notificacoes
 {
-    public class Notificacao
+    public class Notifica
     {
-        public Notificacao()
+        public Notifica()
         {
-            Notificacoes = new List<Notificacao>();
+            Notificacoes = new List<Notifica>();
         }
 
         [NotMapped]
@@ -21,13 +21,13 @@ namespace Entidades.Notificacoes
         public string Mensagem { get; set; }
 
         [NotMapped]
-        public List<Notificacao> Notificacoes { get; set; }
+        public List<Notifica> Notificacoes { get; set; }
 
         public bool ValidarPropriedadeString(string valor, string nomePropriedade)
         {
             if (string.IsNullOrWhiteSpace(valor) || string.IsNullOrWhiteSpace(nomePropriedade))
             {
-                Notificacoes.Add(new Notificacao
+                Notificacoes.Add(new Notifica
                 {
                     Mensagem = "Campo Obrigatório",
                     NomePropriedade = nomePropriedade

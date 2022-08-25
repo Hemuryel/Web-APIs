@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Entidades.Entidades
 {
     [Table("TB_NOTICIA")]
-    public class Noticia : Notificacao
+    public class Noticia : Notifica
     {
         [Column("NTC_ID")]
         public int Id { get; set; }
