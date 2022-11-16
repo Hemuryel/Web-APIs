@@ -1,7 +1,7 @@
 # WebAPIs
 
 AluraFormacaoNETAPI
-- Plataforma Alura
+- formação ASP .NET Core REST APIs plataforma Alura
 
 NoticiasAPI
 - projeto usando DDD 2021 
